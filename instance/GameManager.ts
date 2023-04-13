@@ -32,10 +32,11 @@ export class GameManager {
             "TC","TD","TH","TS"                    
         ]
         let cardArr = Array<Card>()
-        for(const idx in cards) {
-            const card = new Card(cards[idx])
+        cards.map((item)=> {
+            console.log(cards)
+            const card = new Card(item)
             cardArr.push(card)
-        }
+        })
         cardArr.shuffle()
         for(let i = 0; i< cardArr.length; i++) {
             this.cardDeck.push(cardArr[i])
@@ -45,7 +46,12 @@ export class GameManager {
     
 
     public popCard():Card {
-        return this.cardDeck.pop()
+        if(this.cardDeck.length == 0) {
+            this.addCardShuffle()
+        }
+        const card = this.cardDeck.pop()
+        console.log("popCard : " + card.value)
+        return card
     }
     
 
