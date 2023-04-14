@@ -55,12 +55,19 @@ import _QH from '/images/QH.svg'
 import _KH from '/images/KH.svg'
 import _AH from '/images/AH.svg'
 
+   
+
+
 export class Card {
-    public value : string  // " TC : 10 클로버 "
+    public readonly suit: string = ""
+    public readonly rank: number = 0;        
+    public readonly value : string;  // " TC : 10 클로버 "
     constructor(value: string) {
         this.value = value
-    }            
-    
+        this.suit = value.slice(1)
+        this.rank = this.getPoint(value.charAt(0).toUpperCase())
+    }
+
     getImage() {
         console.log("get Image : " + this.value)
         switch (this.value) {
@@ -125,12 +132,9 @@ export class Card {
                 return back
         }
     }
-
-    getType():string {
-        return this.value.slice(1)
-    }
+    
     getTypePoint() : number {
-        switch(this.getType().toUpperCase()) {
+        switch(this.suit) {            
             case "S": return 4
             case "D": return 3
             case "H": return 2
@@ -138,17 +142,16 @@ export class Card {
             default: return 0
         }
     }
-    getPoint() : number {
-        const value = this.value.charAt(0).toUpperCase()
-        switch(value) {
+
+    private getPoint(rank) : number {            
+        switch(rank) {
             case "A": return 14
             case "T" : return 10
             case "J" : return 11
             case "Q" : return 12 
             case "K" : return 13
-            default : Number(value)
+            default : Number(this.rank)
         }
         return 0
     }
 }
-
