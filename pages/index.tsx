@@ -4,33 +4,25 @@ import '../instance/GameManager';
 import { GameManager } from '../instance/GameManager';
 import Image from 'next/image';
 import '../extensions/Array';
-import React, { ReactNode, useState } from 'react';
 import { Card } from '../models/Card';
-
+import React from 'react';
 GameManager.getInstance().addCardShuffle();
 
+class Home extends React.Component {    
+  state = { count: 0,  cards : [] , images : [],  handRank: "" };
 
-
-export default function Home() {  
-  const [cards, setCards] = useState([]);
-  const [handRank, setHandRank] = useState("");
-  
-  function list() {
-    if(cards.length == 0) {
-      popFiveCard()
-    }
-    return (
-      <p>
-        <Image src={cards[0]} alt='카드' width={100} height={200} />
-        <Image src={cards[1]} alt='카드' width={100} height={200} />
-        <Image src={cards[2]} alt='카드' width={100} height={200} />
-        <Image src={cards[3]} alt='카드' width={100} height={200} />
-        <Image src={cards[4]} alt='카드' width={100} height={200} />
-      </p>  
-    )
+  constructor(props) {
+    super(props);
+    this.state = {
+      count : 0,
+      cards : Array<Card>(),
+      images : [],
+      handRank  : ''
+    }    
   }
+
   
-  function popFiveCard() {
+  public popFiveCard = ()=> {
     console.log("popFiveCard");
     const newCards = [
       GameManager.getInstance().popCard(),
@@ -38,36 +30,70 @@ export default function Home() {
       GameManager.getInstance().popCard(),
       GameManager.getInstance().popCard(),
       GameManager.getInstance().popCard()
-    ]
+    ];
+    
+    console.log(newCards);
   
-    const images = newCards.map((value)=>{
-      return value.getImage()
-    })
-    console.log("images : " + images);
-    setCards(images);
+    this.setState({
+      images : [
+        newCards[0].image,
+        newCards[1].image,
+        newCards[2].image,
+        newCards[3].image,
+        newCards[4].image,
+      ]
+    });
+
+    this.setState({
+      cards : newCards
+    });
+    this.setState({  
+      count:GameManager.getInstance().getCardDeckLength()
+    });
+
     const rank = GameManager.getInstance().getHandRank(newCards);
     console.log("hand Rank : " + rank);
-    setHandRank(rank);
-
-  }
-
-  function btnOnClick() {
-    console.log("btnOnClick")
-    popFiveCard();
+    this.setState({
+      ["handRank"] : rank
+    });
   }
   
-  return (
-    <div>
-    <h1>Poker</h1>
-    <article>
-      <header><h2>Card</h2></header>
-        {list()}
-        <p>{handRank}</p>
-      <p>
-        <button onClick={btnOnClick}>change</button>
-      </p>
-    </article>
-    </div>
-  )
-}
+  handleClick = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
+  };
 
+  btnOnClick = ()=> {
+    this.popFiveCard();
+    console.log("btnOnClick : " + this.state.count)
+  }
+  
+  list = ()=> {
+    return (      
+      <p>
+      <Image src={this.state.images[0]} alt='' width={100} height={200}/>
+      <Image src={this.state.images[1]} alt='' width={100} height={200}/>
+      <Image src={this.state.images[2]} alt='' width={100} height={200}/>
+      <Image src={this.state.images[3]} alt='' width={100} height={200}/>
+      <Image src={this.state.images[4]} alt='' width={100} height={200}/>
+      </p>
+    )
+  }
+  render = ()=> {
+    return (
+      <div>
+      <h1>Poker</h1>
+      <article>
+        <header><h2>Card</h2></header>
+        카드 덱에 남은 카드 : {this.state.count}개
+        {this.list()}
+        <p>{this.state.handRank}</p>
+        <button onClick={this.btnOnClick}>change</button>
+      </article>
+      </div>
+    )
+  }  
+  componentDidMount(): void {
+      this.popFiveCard();
+  }
+}
+export default Home;

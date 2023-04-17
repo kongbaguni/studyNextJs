@@ -99,5 +99,9 @@ export class GameManager {
         } else {
           return "HighCard";
         }
-      }    
+      }  
+      
+      getCardDeckLength() {
+        return this.cardDeck.length;
+      }
 }
