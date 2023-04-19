@@ -8,6 +8,7 @@ class Holdem extends React.Component {
         <article>
             <header><h2>Holdem</h2></header>
         </article>
+        {Common.fotter()}
         </>
     }
 

@@ -17,5 +17,14 @@ export class Common {
                   
         )
     }
+    static fotter() {
+        return (
+            <footer>
+                <ul>
+                    <li>kongbaguni.net</li>
+                </ul>
+            </footer>
+        )
+    }
 
 }

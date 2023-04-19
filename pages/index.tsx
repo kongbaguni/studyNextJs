@@ -102,11 +102,12 @@ class Home extends React.Component {
       <article>
         <header><h2>Card Shuffle Test</h2></header>
         {this.deck()}
-        <p>카드 덱에 남은 카드 : {this.state.count}개</p>
+        <p className='tooltip'>카드 덱에 남은 카드 : {this.state.count}개</p>
         {this.list()}
         <p>{this.state.handRank}</p>
         <p><button onClick={this.btnOnClick}>change</button></p>
       </article>
+      {Common.fotter()}
       </div>
     )
   }  
