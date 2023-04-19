@@ -33,25 +33,30 @@ export class GameManager {
         ]
         let cardArr = Array<Card>()
         cards.map((item)=> {
-            console.log(cards)
-            const card = new Card(item)
-            cardArr.push(card)
+            console.log(cards);
+            const card = new Card(item);
+            cardArr.push(card);
         })
-        cardArr.shuffle()
+        cardArr.shuffle();
         for(let i = 0; i< cardArr.length; i++) {
-            this.cardDeck.push(cardArr[i])
+            this.cardDeck.push(cardArr[i]);
         }
-        console.log(this.cardDeck)
+        console.log(this.cardDeck);
     }
     
 
-    public popCard():Card {
-        if(this.cardDeck.length == 0) {
-            this.addCardShuffle()
-        }
-        const card = this.cardDeck.pop()
-        console.log("popCard : " + card.value)
-        return card
+    public popCard(length:number):Array<Card> {
+      if(this.cardDeck.length < length) {
+        this.addCardShuffle();
+      }
+      let list = Array<Card>()
+      for(let i = 0; i<length; i++) {
+        const card = this.cardDeck.pop();
+        console.log("popCard : " + card.value);
+        list.push(card);
+      }
+        
+      return list;
     }
 
     public getHandRank(hand: Card[]): string {
@@ -62,7 +67,7 @@ export class GameManager {
             console.log("getHandRank card : " + idx + " : " + hand[idx].value);
         }
         if(hand.length < 5) {
-            console.log("card 숫자가 모자라다.")
+            console.log("card 숫자가 모자라다.");
         }
         
       

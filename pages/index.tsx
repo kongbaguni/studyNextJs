@@ -1,15 +1,18 @@
-import Head from 'next/head'
 import styles from '../styles/Home.module.css';
-import '../instance/GameManager';
 import { GameManager } from '../instance/GameManager';
 import Image from 'next/image';
+import '../instance/GameManager';
 import '../extensions/Array';
 import { Card } from '../models/Card';
 import React from 'react';
+import Link from 'next/link';
+import { Common } from './common';
+import backImg from '../images/back.svg'
+
 GameManager.getInstance().addCardShuffle();
 
 class Home extends React.Component {    
-  state = { count: 0,  cards : [] , images : [],  handRank: "" };
+  state = { count: 0,  cards : [] , images : [], deckImages: [] ,handRank: "" };
 
   constructor(props) {
     super(props);
@@ -17,20 +20,15 @@ class Home extends React.Component {
       count : 0,
       cards : Array<Card>(),
       images : [],
+      deckImages : [],
       handRank  : ''
     }    
   }
 
   
-  public popFiveCard = ()=> {
+  popFiveCard = ()=> {
     console.log("popFiveCard");
-    const newCards = [
-      GameManager.getInstance().popCard(),
-      GameManager.getInstance().popCard(),
-      GameManager.getInstance().popCard(),
-      GameManager.getInstance().popCard(),
-      GameManager.getInstance().popCard()
-    ];
+    const newCards = GameManager.getInstance().popCard(5);
     
     console.log(newCards);
   
@@ -56,6 +54,13 @@ class Home extends React.Component {
     this.setState({
       ["handRank"] : rank
     });
+    let newDeckImages = []
+    for(let i=0; i<GameManager.getInstance().getCardDeckLength(); i++) {
+      newDeckImages.push(backImg)      
+    }
+    this.setState({
+      deckImages : newDeckImages
+    })
   }
   
   handleClick = ({ target: { name, value } }) => {
@@ -67,27 +72,40 @@ class Home extends React.Component {
     console.log("btnOnClick : " + this.state.count)
   }
   
+  deck = () => {
+    return (
+      <p className={styles.deck}>
+        {
+          this.state.deckImages.map(image=> (
+            <Image src={image} alt='' width={10} height={20}/>
+          ))          
+        }
+      </p>
+    )
+  }
+
   list = ()=> {
     return (      
       <p>
-      <Image src={this.state.images[0]} alt='' width={100} height={200}/>
-      <Image src={this.state.images[1]} alt='' width={100} height={200}/>
-      <Image src={this.state.images[2]} alt='' width={100} height={200}/>
-      <Image src={this.state.images[3]} alt='' width={100} height={200}/>
-      <Image src={this.state.images[4]} alt='' width={100} height={200}/>
+        {
+          this.state.images.map(image => (
+            <Image src={image} alt='' width={100} height={200}/>
+          ))
+        }
       </p>
     )
   }
   render = ()=> {
     return (
-      <div>
-      <h1>Poker</h1>
+      <div className={styles.main}>
+      {Common.navi("home")}
       <article>
-        <header><h2>Card</h2></header>
-        카드 덱에 남은 카드 : {this.state.count}개
+        <header><h2>Card Shuffle Test</h2></header>
+        {this.deck()}
+        <p>카드 덱에 남은 카드 : {this.state.count}개</p>
         {this.list()}
         <p>{this.state.handRank}</p>
-        <button onClick={this.btnOnClick}>change</button>
+        <p><button onClick={this.btnOnClick}>change</button></p>
       </article>
       </div>
     )
