@@ -75,11 +75,12 @@ class Home extends React.Component {
   deck = () => {
     return (
       <p className={styles.deck}>
-        {
+        {/* {
           this.state.deckImages.map(image=> (
-            <Image src={image} alt='' width={10} height={20}/>
+            // <Image src={image} alt='' width={10} height={20}/>
+            <p>{image}</p>
           ))          
-        }
+        } */}
       </p>
     )
   }
@@ -106,6 +107,7 @@ class Home extends React.Component {
         {this.list()}
         <p>{this.state.handRank}</p>
         <p><button onClick={this.btnOnClick}>change</button></p>
+        <p><button onClick={this.cardTest}>test</button></p>
       </article>
       {Common.fotter()}
       </div>
@@ -113,6 +115,14 @@ class Home extends React.Component {
   }  
   componentDidMount(): void {
       this.popFiveCard();
+  }
+
+  cardTest = () => {
+    // const cards = [new Card("2S"), new Card("3D"), new Card("4H"), new Card("5C"), new Card("6S")];
+    // const cards = [new Card("3S"), new Card("2D"), new Card("2H"), new Card("3C"), new Card("2S")];
+    const cards = [new Card("3S"), new Card("3D"), new Card("3H"), new Card("3C"), new Card("TS")];
+    const handRank = GameManager.getInstance().getHandRank(cards);
+    console.log("test handRank : " + handRank);
   }
 }
 export default Home;

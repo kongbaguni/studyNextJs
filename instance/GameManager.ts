@@ -61,7 +61,7 @@ export class GameManager {
 
     public getHandRank(hand: Card[]): string {
         // 숫자와 무늬를 따로 분리합니다.
-        const ranks = hand.map(card => card.rank);
+        let ranks = hand.map(card => card.rank);
         const suits = hand.map(card => card.suit);
         for(const idx in hand) {
             console.log("getHandRank card : " + idx + " : " + hand[idx].value);
@@ -70,18 +70,26 @@ export class GameManager {
             console.log("card 숫자가 모자라다.");
         }
         
-      
-        // 패를 족보 순으로 정렬합니다.
-        ranks.sort((a, b) => ranks.indexOf(a) - ranks.indexOf(b));
+        console.log("rank sort before _----------------")
+        console.log(ranks);
         
+        // 패를 족보 순으로 정렬합니다.
+        
+        ranks = ranks.sort((a, b) => a - b);
+        console.log("rank sort after_----------------")
+        console.log(ranks);
+
+
         // 각 족보에 해당하는 패를 판정합니다.
         const isFlush = suits.every(suit => suit === suits[0]);
-    
-         
         const isStraight = ranks.every((rank, index) => index === 0 || ranks[index - 1] === rank - 1);
-        const numPairs = ranks.filter((rank, index) => index === 0 || ranks[index - 1] === rank).length;
-        const numTriples = ranks.filter((rank, index) => ranks.filter(r => r === rank).length === 3).length;
-        const numFours = ranks.filter((rank, index) => ranks.filter(r => r === rank).length === 4).length;
+        const numPairs =  ranks.findDuplicateNumbers(2);
+        const numTriples =  ranks.findDuplicateNumbers(3);
+        const numFours = ranks.findDuplicateNumbers(4);
+        console.log("isStraght : " + isStraight);
+        console.log("numPairs : " + numPairs);
+        console.log("numTriples : " + numTriples);
+        console.log("numFours :" + numFours);
 
         if (isFlush && isStraight && ranks[0] === 10) {
           return "RoyalFlush";

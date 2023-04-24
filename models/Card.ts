@@ -61,19 +61,20 @@ import _AH from '../images/AH.svg'
 export class Card {
     public readonly value : string;  // " TC : 10 클로버 "
     public readonly suit: string = "";
-    public readonly rank: number = 0;        
+    public readonly rank: number = -1;        
     public readonly suitRank : number = 0;
     public readonly image  = back;
     constructor(value: string) {
         this.value = value;
         this.suit = value.slice(1);
-        this.rank = this.getPoint(value.charAt(0).toUpperCase());
+        this.rank = this.getPoint(value.charAt(0));
         this.image = this.getImage();
         this.suitRank = this.getTypePoint();
+        console.log("card init " + value + " rank:" + this.rank + " suitRank" + this.suitRank);
     }
 
     private getImage() {
-        console.log("get Image : " + this.value)
+
         switch (this.value) {
             case "2C": return _2C;
             case "3C": return _3C;
@@ -153,8 +154,8 @@ export class Card {
             case "J" : return 11;
             case "Q" : return 12;
             case "K" : return 13;
-            default : Number(this.rank);
+            default : Number(rank);
         }
-        return 0;
+        return Number(rank);
     }
 }
