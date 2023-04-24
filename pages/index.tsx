@@ -75,12 +75,11 @@ class Home extends React.Component {
   deck = () => {
     return (
       <p className={styles.deck}>
-        {/* {
-          this.state.deckImages.map(image=> (
-            // <Image src={image} alt='' width={10} height={20}/>
-            <p>{image}</p>
+        {
+          this.state.deckImages.map(image=> (                      
+            <Image src={image} alt='' width={30} height={60}/>
           ))          
-        } */}
+        } 
       </p>
     )
   }
