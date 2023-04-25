@@ -1,4 +1,5 @@
 import { Card } from "../models/Card"
+import { HandRank } from "../models/HandRank"
 import '/extensions/Array'
 export class GameManager {
     private static instance : GameManager
@@ -59,7 +60,7 @@ export class GameManager {
       return list;
     }
 
-    public getHandRank(hand: Card[]): string {
+    public getHandRank(hand: Card[]): HandRank {
         // 숫자와 무늬를 따로 분리합니다.
         let ranks = hand.map(card => card.rank);
         const suits = hand.map(card => card.suit);
@@ -92,25 +93,25 @@ export class GameManager {
         console.log("numFours :" + numFours);
 
         if (isFlush && isStraight && ranks[0] === 10) {
-          return "RoyalFlush";
+          return new HandRank("RoyalFlush");
         } else if (isFlush && isStraight) {
-          return "StraightFlush";
+          return new HandRank("StraightFlush");
         } else if (numFours === 1) {
-          return "FourOfAKind";
+          return new HandRank("FourOfAKind");
         } else if (numTriples === 1 && numPairs === 1) {
-          return "FullHouse";
+          return new HandRank("FullHouse");
         } else if (isFlush) {
-          return "Flush";
+          return new HandRank("Flush");
         } else if (isStraight) {
-          return "Straight";
+          return new HandRank("Straight");
         } else if (numTriples === 1) {
-          return "ThreeOfAKind";
+          return new HandRank("ThreeOfAKind");
         } else if (numPairs === 2) {
-          return "TwoPair";
+          return new HandRank("TwoPair");
         } else if (numPairs === 1) {
-          return "OnePair";
+          return new HandRank("OnePair");
         } else {
-          return "HighCard";
+          return new HandRank("HighCard");
         }
       }  
       

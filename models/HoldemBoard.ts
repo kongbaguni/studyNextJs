@@ -36,4 +36,27 @@ export class HoldemBoard {
         }        
         this.comunityCardStringValue = str
     }
+
+    public checkAllHands() {
+        for(var i=0; i<this.players.length; i++) {
+            this.checkHands(this.players[i])
+        }
+    }
+    
+    private checkHands(player:Player) {
+        const cards = player.cards;
+        const cc = this.comunityCards;
+        const hands = [
+            GameManager.getInstance().getHandRank([cards[0],cards[1],cc[0],cc[1],cc[2]]),
+            GameManager.getInstance().getHandRank([cards[0],cards[1],cc[0],cc[1],cc[3]]),
+            GameManager.getInstance().getHandRank([cards[0],cards[1],cc[0],cc[1],cc[4]]),
+            GameManager.getInstance().getHandRank([cards[0],cards[1],cc[0],cc[2],cc[3]]),
+            GameManager.getInstance().getHandRank([cards[0],cards[1],cc[0],cc[2],cc[4]]),
+            GameManager.getInstance().getHandRank([cards[0],cards[1],cc[1],cc[2],cc[3]]),
+            GameManager.getInstance().getHandRank([cards[0],cards[1],cc[1],cc[2],cc[4]]),
+            GameManager.getInstance().getHandRank([cards[0],cards[1],cc[1],cc[3],cc[4]]),
+            GameManager.getInstance().getHandRank([cards[0],cards[1],cc[2],cc[3],cc[4]]),   
+        ]
+        console.log(hands);
+    }
 }

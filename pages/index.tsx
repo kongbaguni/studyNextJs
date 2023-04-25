@@ -49,7 +49,7 @@ class Home extends React.Component {
       count:GameManager.getInstance().getCardDeckLength()
     });
 
-    const rank = GameManager.getInstance().getHandRank(newCards);
+    const rank = GameManager.getInstance().getHandRank(newCards).value;
     console.log("hand Rank : " + rank);
     this.setState({
       ["handRank"] : rank

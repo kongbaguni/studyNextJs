@@ -63,7 +63,13 @@ class Holdem extends React.Component {
         console.log("shuffleCard");
         this.holdemBoard.shuffleCard();
                     
+        this.holdemBoard.checkAllHands();
         console.log("cm : " + this.holdemBoard.comunityCardStringValue);
+    }
+    
+    componentDidMount(): void {
+        this.setState({});
+        this.holdemBoard.shuffleCard();
     }
 }
 
