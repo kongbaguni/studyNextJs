@@ -9,7 +9,11 @@ declare global {
       /** 배열 요소를 무작위로 섞기 */
       shuffle(): T[];
 
-      /** 중복숫자 갯수 찾기 */
+      /** 중복요소의 갯수 찾기 
+       * arr = ['가','가','가','나','나','나','다','다'];
+       * arr.findDuplicateNumbers(3);  = 2 
+       * arr.findDuplicateNumbers(2);  = 1 
+       * */
       findDuplicateNumbers(length:number) : number;
     }
 }
@@ -31,7 +35,7 @@ Array.prototype.findDuplicateNumbers = function(length:number) {
       counts[this[i]]++;
     } else {
       counts[this[i]] = 1;
-    }
+    }    
   }
   console.log(counts);
   for (const num in counts) {
