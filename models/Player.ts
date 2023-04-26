@@ -1,9 +1,11 @@
 import React from "react";
 import { People } from "./People";
+import { HandRank } from "./HandRank";
 
 export class Player extends People {    
     public point:number = 0;    
     public bettingPoint:number = 0;
+    public handRank:String = "";
     public betting(point:number):boolean {
         if(this.point > point) {
             this.point -= point;
@@ -26,6 +28,6 @@ export class Player extends People {
             result += this.cards[i].value
         }
         return result
-    }
+    }    
     
 }

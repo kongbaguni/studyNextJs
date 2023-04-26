@@ -37,12 +37,12 @@ export class HoldemBoard {
         this.comunityCardStringValue = str
     }
 
-    public checkAllHands() {
+    public checkAllHands() {        
         for(var i=0; i<this.players.length; i++) {
             this.checkHands(this.players[i])
         }
     }
-    
+
     private checkHands(player:Player) {
         const cards = player.cards;
         const cc = this.comunityCards;
@@ -57,6 +57,11 @@ export class HoldemBoard {
             GameManager.getInstance().getHandRank([cards[0],cards[1],cc[1],cc[3],cc[4]]),
             GameManager.getInstance().getHandRank([cards[0],cards[1],cc[2],cc[3],cc[4]]),   
         ]
+        const newHands = hands.sort((a,b)=>a.point - b.point);
+
         console.log(hands);
+        console.log("--------------------");
+        console.log(newHands);
+        player.handRank = newHands[newHands.length-1].value;
     }
 }
