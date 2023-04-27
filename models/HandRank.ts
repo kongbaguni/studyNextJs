@@ -1,8 +1,10 @@
 export class HandRank {
     public readonly value;
     public readonly point;   
-    constructor(value:String) {    
+    public readonly totalPoint;
+    constructor(value:String, totalPoint:number) {    
         this.value = value;        
+        this.totalPoint = totalPoint;
         switch (value) {
             case "RoyalFlush": 
                 this.point = 10;

@@ -16,6 +16,10 @@ class Holdem extends React.Component {
                     <Image src={card.image} alt='' width={50} height={100}/>
               ))              
             } 
+            &nbsp;
+            {player.comunityIdxs.map(idx=> (                
+                <Image src={this.holdemBoard.comunityCards[idx].image} alt='' width={50} height={100}/>
+            ))}
             <br />
             <span>
                 {player.handRank}
@@ -49,7 +53,7 @@ class Holdem extends React.Component {
                             <li> {player.name}
                                     {
                                        this.cardDeck(player)
-                                    }
+                                    }                                      
                             </li>                                
                         ))
                 }                    
@@ -74,6 +78,7 @@ class Holdem extends React.Component {
     componentDidMount(): void {
         this.setState({});
         this.holdemBoard.shuffleCard();
+        this.holdemBoard.checkAllHands();
     }
 }
 

@@ -92,26 +92,31 @@ export class GameManager {
         console.log("numTriples : " + numTriples);
         console.log("numFours :" + numFours);
 
+        let totalPoint = 0;
+        for(let i = 0 ; i < hand.length; i++) {
+          totalPoint += hand[i].rank
+        }
+        
         if (isFlush && isStraight && ranks[0] === 10) {
-          return new HandRank("RoyalFlush");
+          return new HandRank("RoyalFlush", totalPoint);
         } else if (isFlush && isStraight) {
-          return new HandRank("StraightFlush");
+          return new HandRank("StraightFlush", totalPoint);
         } else if (numFours === 1) {
-          return new HandRank("FourOfAKind");
+          return new HandRank("FourOfAKind", totalPoint);
         } else if (numTriples === 1 && numPairs === 1) {
-          return new HandRank("FullHouse");
+          return new HandRank("FullHouse", totalPoint);
         } else if (isFlush) {
-          return new HandRank("Flush");
+          return new HandRank("Flush", totalPoint);
         } else if (isStraight) {
-          return new HandRank("Straight");
+          return new HandRank("Straight", totalPoint);
         } else if (numTriples === 1) {
-          return new HandRank("ThreeOfAKind");
+          return new HandRank("ThreeOfAKind", totalPoint);
         } else if (numPairs === 2) {
-          return new HandRank("TwoPair");
+          return new HandRank("TwoPair", totalPoint);
         } else if (numPairs === 1) {
-          return new HandRank("OnePair");
+          return new HandRank("OnePair", totalPoint);
         } else {
-          return new HandRank("HighCard");
+          return new HandRank("HighCard", totalPoint);
         }
       }  
       

@@ -5,7 +5,10 @@ import { HandRank } from "./HandRank";
 export class Player extends People {    
     public point:number = 0;    
     public bettingPoint:number = 0;
+    /** 족보 */
     public handRank:String = "";
+    /** 족보 만드는데 사용한 커뮤니티카드(3장) 의 idx  */
+    public comunityIdxs:Array<number> = [];    
     public betting(point:number):boolean {
         if(this.point > point) {
             this.point -= point;
