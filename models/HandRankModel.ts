@@ -1,4 +1,4 @@
-export class HandRank {
+export class HandRankModel {
     public readonly value;
     public readonly point;   
     public readonly totalPoint;

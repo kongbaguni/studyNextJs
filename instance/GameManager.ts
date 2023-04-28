@@ -1,5 +1,5 @@
 import { CardModel } from "../models/CardModel"
-import { HandRank } from "../models/HandRank"
+import { HandRankModel } from "../models/HandRankModel"
 import '/extensions/Array'
 export class GameManager {
     private static instance : GameManager
@@ -99,25 +99,25 @@ export class GameManager {
         }
         
         if (isFlush && isStraight && ranks[0] === 10) {
-          return new HandRank("RoyalFlush", totalPoint);
+          return new HandRankModel("RoyalFlush", totalPoint);
         } else if (isFlush && isStraight) {
-          return new HandRank("StraightFlush", totalPoint);
+          return new HandRankModel("StraightFlush", totalPoint);
         } else if (numFours === 1) {
-          return new HandRank("FourOfAKind", totalPoint);
+          return new HandRankModel("FourOfAKind", totalPoint);
         } else if (numTriples === 1 && numPairs === 1) {
-          return new HandRank("FullHouse", totalPoint);
+          return new HandRankModel("FullHouse", totalPoint);
         } else if (isFlush) {
-          return new HandRank("Flush", totalPoint);
+          return new HandRankModel("Flush", totalPoint);
         } else if (isStraight) {
-          return new HandRank("Straight", totalPoint);
+          return new HandRankModel("Straight", totalPoint);
         } else if (numTriples === 1) {
-          return new HandRank("ThreeOfAKind", totalPoint);
+          return new HandRankModel("ThreeOfAKind", totalPoint);
         } else if (numPairs === 2) {
-          return new HandRank("TwoPair", totalPoint);
+          return new HandRankModel("TwoPair", totalPoint);
         } else if (numPairs === 1) {
-          return new HandRank("OnePair", totalPoint);
+          return new HandRankModel("OnePair", totalPoint);
         } else {
-          return new HandRank("HighCard", totalPoint);
+          return new HandRankModel("HighCard", totalPoint);
         }
       }  
       

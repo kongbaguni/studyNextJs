@@ -1,15 +1,15 @@
-import { Card } from "./Card";
+import { CardModel } from "./CardModel";
 
-export class People {
+export class PeopleModel {
     public readonly name:String ;
-    public readonly cards:Array<Card> = [];
+    public readonly cards:Array<CardModel> = [];
         
     constructor(name:String) {
         this.name = name;
         console.log("People 생성 : " + name + " " + this.name);
     }
 
-    public addCard(cards:Array<Card>) {
+    public addCard(cards:Array<CardModel>) {
         for(var i=0; i<cards.length; i++) {
             this.cards.push(cards[i]);
         }

@@ -1,18 +1,18 @@
 import { GameManager } from "../instance/GameManager";
-import { Card } from "./Card";
-import { Dealer } from "./Dealer";
-import { Player } from "./Player";
+import { CardModel } from "./CardModel";
+import { DealerModel } from "./DealerModel";
+import { PlayerModel } from "./PlayerModel";
 
 export class HoldemBoard {
-    public readonly dealer:Dealer = new Dealer("딜러");
-    public readonly players:Array<Player> = [];   
-    public readonly comunityCards:Array<Card> = [];
+    public readonly dealer:DealerModel = new DealerModel("딜러");
+    public readonly players:Array<PlayerModel> = [];   
+    public readonly comunityCards:Array<CardModel> = [];
 
     public comunityCardStringValue:String = "";
 
     constructor(playerNames:Array<String>) {
         for(var idx = 0; idx < playerNames.length; idx ++) {
-            const p = new Player(playerNames[idx]);
+            const p = new PlayerModel(playerNames[idx]);
             this.players.push(p);
         }                
     }

@@ -1,8 +1,8 @@
 import React from "react";
-import { People } from "./People";
+import { PeopleModel } from "./PeopleModel";
 import { HandRank } from "./HandRank";
 
-export class Player extends People {    
+export class PlayerModel extends PeopleModel {    
     public point:number = 0;    
     public bettingPoint:number = 0;
     /** 족보 */
