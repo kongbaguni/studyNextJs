@@ -2,20 +2,26 @@ import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import Link from 'next/link';
 import navigation from "./navigation";
+import { ProfileManager } from "../instance/ProfileManager";
+import { ProfileModel } from "../models/ProfileModel";
 
 
 
-const SignInOut: NextPage = () => {
+const ProfilePage: NextPage = () => {
   const { data, status } = useSession();
   let isSignIn = false;
   let email = "";
   let name = "";
   let image = "";
-  if( data != null && data.user!= null) {
-    isSignIn = true;
-    email = data.user.email
-    name = data.user.name
-    image = data.user.image
+  if(data != null) {
+    const user = data.user;
+    if(user != null) {
+      isSignIn = true;
+      email = data.user.email
+      name = data.user.name
+      image = data.user.image
+      ProfileManager.getInstance().profile = new ProfileModel(name,email,image);
+    }
   }
 
 
@@ -68,4 +74,4 @@ const SignInOut: NextPage = () => {
   
 };
 
-export default SignInOut;
+export default ProfilePage;

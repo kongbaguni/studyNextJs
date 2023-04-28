@@ -55,7 +55,7 @@ import _QH from '../images/QH.svg'
 import _KH from '../images/KH.svg'
 import _AH from '../images/AH.svg'
 
-export class Card {
+export class CardModel {
     public readonly value : string;  // " TC : 10 클로버 "
     public readonly suit: string = "";
     public readonly rank: number = -1;        

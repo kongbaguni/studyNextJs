@@ -1,20 +1,21 @@
-import { Card } from "../models/Card"
+import { CardModel } from "../models/CardModel"
 import { HandRank } from "../models/HandRank"
 import '/extensions/Array'
 export class GameManager {
     private static instance : GameManager
-    private constructor() {
-
-    }
-
-    private cardDeck : Array<Card> = Array<Card>()
-
     public static getInstance() : GameManager {
         if(!GameManager.instance) {
             GameManager.instance = new GameManager()
         }
         return GameManager.instance
     }
+    
+    private constructor() {
+
+    }
+
+    private cardDeck : Array<Card> = Array<Card>()
+
 
     public addCardShuffle() {
         const cards = [
@@ -35,7 +36,7 @@ export class GameManager {
         let cardArr = Array<Card>()
         cards.map((item)=> {
             console.log(cards);
-            const card = new Card(item);
+            const card = new CardModel(item);
             cardArr.push(card);
         })
         cardArr.shuffle();
