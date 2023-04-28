@@ -1,5 +1,6 @@
 import React from "react";
-import { Common } from "./common";
+import navigation from "./navigation";
+import fotter from "./footer";
 import { HoldemBoard } from "../models/HoldemBoard";
 import { Dealer } from '../models/Dealer';
 import { Player } from '../models/Player';
@@ -42,7 +43,7 @@ class Holdem extends React.Component {
     }
     render(): React.ReactNode {
         return <>
-        {Common.navi("holdem")}
+        {navigation("holdem")}
         <article>
             <header><h2>Holdem</h2></header>
        
@@ -62,7 +63,7 @@ class Holdem extends React.Component {
                 <button onClick={this.shuffleCard}>shuffleCard</button>
             </p>
         </article>
-        {Common.fotter()}
+        {fotter()}
         </>
     }
 
