@@ -3,7 +3,7 @@ import { GameManager } from '../instance/GameManager';
 import Image from 'next/image';
 import '../instance/GameManager';
 import '../extensions/Array';
-import { Card } from '../models/Card';
+import { Card } from '../models/CardModel';
 import React from 'react';
 import footer from './footer';
 import backImg from '../images/back.svg';

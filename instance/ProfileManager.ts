@@ -1,4 +1,4 @@
-import { Profile } from "../models/Profile"
+import { Profile } from "../models/ProfileModel"
 
 export class ProfileManager {
     private static instance : ProfileManager

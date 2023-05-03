@@ -1,6 +1,6 @@
 import React from "react";
 import { PeopleModel } from "./PeopleModel";
-import { HandRank } from "./HandRank";
+import { HandRank } from "./HandRankModel";
 
 export class PlayerModel extends PeopleModel {    
     public point:number = 0;    

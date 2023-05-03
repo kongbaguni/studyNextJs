@@ -2,8 +2,8 @@ import React from "react";
 import navigation from "./navigation";
 import fotter from "./footer";
 import { HoldemBoard } from "../models/HoldemBoard";
-import { Dealer } from '../models/Dealer';
-import { Player } from '../models/Player';
+import { Dealer } from '../models/DealerModel';
+import { Player } from '../models/PlayerModel';
 import Image from 'next/image';
 
 class Holdem extends React.Component {
