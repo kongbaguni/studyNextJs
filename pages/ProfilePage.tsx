@@ -5,7 +5,7 @@ import navigation from "./navigation";
 import { ProfileManager } from "../instance/ProfileManager";
 import { ProfileModel } from "../models/ProfileModel";
 
-
+import Image from "next/image";
 
 const ProfilePage: NextPage = () => {
   const { data, status } = useSession();
@@ -45,7 +45,7 @@ const ProfilePage: NextPage = () => {
       <table>
         <tbody>
           <tr>
-            <td rowSpan={3}> <img src ={image} alt="profile" width={100} height={100}/></td>
+            <td rowSpan={3}><img src ={image} alt="profile" width={100} height={100}/></td>
             <th>email</th>
             <td>{email}</td>
           </tr>

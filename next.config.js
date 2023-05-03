@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  output: 'standalone',
+  images: {
+    domains : ['lh3.googleusercontent.com'],
+  },
 }
-
 
 const withImages = require('next-images')
 module.exports = withImages()
