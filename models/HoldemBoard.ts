@@ -43,7 +43,7 @@ export class HoldemBoard {
         }
     }
 
-    private checkHands(player:Player) {
+    private checkHands(player:PlayerModel) {
         const cards = player.cards;
         const cc = this.comunityCards;
         const idxs = [

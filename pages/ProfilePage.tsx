@@ -1,18 +1,23 @@
 import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import Link from 'next/link';
-import navigation from "./navigation";
+import Navigation from "./Navigation";
 import { ProfileManager } from "../instance/ProfileManager";
 import { ProfileModel } from "../models/ProfileModel";
 
 import Image from "next/image";
+import { useEffect } from "react";
 
 const ProfilePage: NextPage = () => {
+    
   const { data, status } = useSession();
   let isSignIn = false;
   let email = "";
   let name = "";
   let image = "";
+  useEffect(()=> {
+    console.log("Profile did Mount!")
+  }); 
   if(data != null) {
     const user = data.user;
     if(user != null) {
@@ -67,7 +72,7 @@ const ProfilePage: NextPage = () => {
 
   return (
     <>
-      {navigation("SignInOut")}
+      {Navigation("SignInOut")}
       {profileBody}
     </>
   );

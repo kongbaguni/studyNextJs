@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ProfileManager } from '../instance/ProfileManager';
 
-export default function navigation(now:String) {
+export default function Navigation(now:String) {
     const isSignIn = ProfileManager.getInstance().profile != null; 
     let signBtn = (
         <li className={now == "SignInOut" ? 'on' : 'off'}><Link href="/ProfilePage">Profile</Link></li>        
@@ -14,9 +14,9 @@ export default function navigation(now:String) {
         <h1><Link href = "/">Poker</Link></h1>                
         <nav>
                 <ol> 
-                    <li className={now == "home" ? 'on' : 'off'}><Link href = "/">home</Link></li>
-                    <li className={now == "holdem" ? 'on' : 'off'}><Link href="/holdem">holdem</Link></li>
-                    <li className={now == "blackjack" ? 'on' : 'off'}><Link href="/blackjack">blackjack</Link></li>
+                    <li className={now == "HomePage" ? 'on' : 'off'}><Link href = "/">Home</Link></li>
+                    <li className={now == "HoldemPage" ? 'on' : 'off'}><Link href="/HoldemPage">Holdem</Link></li>
+                    <li className={now == "BlackjackPage" ? 'on' : 'off'}><Link href="/BlackjackPage">Blackjack</Link></li>
                     {signBtn}
                 </ol>
                 </nav>

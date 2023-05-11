@@ -3,13 +3,14 @@ import { GameManager } from '../instance/GameManager';
 import Image from 'next/image';
 import '../instance/GameManager';
 import '../extensions/Array';
-import { Card } from '../models/CardModel';
+import { CardModel } from '../models/CardModel';
 import React from 'react';
 import footer from './footer';
 import backImg from '../images/back.svg';
-import navigation from './navigation';
+import Navigation from './Navigation';
 
 GameManager.getInstance().addCardShuffle();
+
 
 class Home extends React.Component {    
   state = { count: 0,  cards : [] , images : [], deckImages: [] ,handRank: "" };
@@ -18,7 +19,7 @@ class Home extends React.Component {
     super(props);
     this.state = {
       count : 0,
-      cards : Array<Card>(),
+      cards : Array<CardModel>(),
       images : [],
       deckImages : [],
       handRank  : ''
@@ -98,7 +99,7 @@ class Home extends React.Component {
   render = ()=> {
     return (
       <div className={styles.main}>        
-        {navigation("home")}
+        {Navigation("home")}
       <article>
         <header><h2>Card Shuffle Test</h2></header>
         {this.deck()}
