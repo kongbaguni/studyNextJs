@@ -3,6 +3,7 @@ import { GetServerSideProps, NextPage } from "next";
 import Navigation from "../components/Navigation";
 import SiteFooter from "../components/SiteFooter";
 import Image from "next/image";
+import styles from "../../styles/ProductPage.module.css";
 
 interface Props {
   data: {
@@ -19,7 +20,7 @@ const ProductPage: NextPage<Props> = ({ data }) => {
   return (
     <>
       {Navigation("ProductListPage")}
-      <article>
+      <article className={styles.productView}>
         <header>
           <h2>{data.title}</h2>
         </header>

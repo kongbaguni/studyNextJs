@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Navigation from "./components/Navigation";
 import { HoldemBoard } from '../models/HoldemBoard';
-import Image from 'next/image';
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import HoldemCardDeck from "./components/HoldemCardDeck";
-import { GameManager } from "../instance/GameManager";
+import { GameManager } from '../instance/GameManager';
 import HoldemComunitiCards from "./components/HoldemComunitiCards";
 import SiteFooter from "./components/SiteFooter";
 
-const HoldemPage : NextPage = () => {    
+const HoldemPage : NextPage = () => {
     
     const [holdemBoard, setHoldemBoard] = useState(GameManager.getInstance().holdemBoard);
 
@@ -49,3 +48,5 @@ const HoldemPage : NextPage = () => {
 }
 
 export default HoldemPage;
+
+  

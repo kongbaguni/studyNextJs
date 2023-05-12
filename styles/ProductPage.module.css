@@ -1,0 +1,11 @@
+.productView img {
+    border: 2px solid green;
+    margin: 20px;
+}
+.productView ul {
+    margin: 0px;
+}
+.productView ul li {
+    margin: 5px;
+    padding: 5px;
+}
