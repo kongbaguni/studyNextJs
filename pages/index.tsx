@@ -5,9 +5,9 @@ import '../instance/GameManager';
 import '../extensions/Array';
 import { CardModel } from '../models/CardModel';
 import React from 'react';
-import footer from './footer';
+import footer from './components/SiteFooter';
 import backImg from '../images/back.svg';
-import Navigation from './Navigation';
+import Navigation from './components/Navigation';
 
 GameManager.getInstance().addCardShuffle();
 
@@ -99,7 +99,7 @@ class Home extends React.Component {
   render = ()=> {
     return (
       <div className={styles.main}>        
-        {Navigation("home")}
+        {Navigation("HomePage")}
       <article>
         <header><h2>Card Shuffle Test</h2></header>
         {this.deck()}

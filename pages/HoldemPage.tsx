@@ -1,50 +1,37 @@
 import React, { useEffect, useState } from "react";
-import Navigation from "./Navigation";
-import fotter from "./footer";
-import { HoldemBoard } from "../models/HoldemBoard";
-import { DealerModel } from '../models/DealerModel';
-import { PlayerModel } from '../models/PlayerModel';
+import Navigation from "./components/Navigation";
+import { HoldemBoard } from '../models/HoldemBoard';
 import Image from 'next/image';
 import { NextPage } from "next";
-import HoldemCardDeck from "./HoldemCardDeck";
+import HoldemCardDeck from "./components/HoldemCardDeck";
+import { GameManager } from "../instance/GameManager";
+import HoldemComunitiCards from "./components/HoldemComunitiCards";
+import SiteFooter from "./components/SiteFooter";
 
+const HoldemPage : NextPage = () => {    
+    
+    const [holdemBoard, setHoldemBoard] = useState(GameManager.getInstance().holdemBoard);
 
-const HoldemPage : NextPage = () => {
-    const [holdemBoard, setHoldemBoard] = useState(new HoldemBoard(["서태지","지상렬","고길동","이박사"]));
     useEffect(()=> {
-        holdemBoard.shuffleCard();
-        holdemBoard.checkAllHands();
+        console.log("lifeCycle : 나타났다");
+        shuffleCard();                
+        return () => {
+            shuffleCard();
+            console.log("lifeCycle : 사라졌다");            
+        }
     }); 
     
     const shuffleCard = ()=> {
-        // this.setState({});
-        console.log("shuffleCard");
-        holdemBoard.shuffleCard();
-                    
-        holdemBoard.checkAllHands();
-        console.log("cm : " + holdemBoard.comunityCardStringValue);
-    }
-
-    const comunitiCards = () => {
-        return (
-            <p>
-                {
-                    holdemBoard.comunityCards.map (card=> (
-                        <Image src={card.image} alt='' width={100} height={200}/>
-                    ))
-                }
-            </p>
-
-        )
-    }
-    
+        holdemBoard.shuffleCard();                    
+        holdemBoard.checkAllHands();        
+        setHoldemBoard(holdemBoard)
+    }    
     
     return <>
-        {Navigation("holdem")}
+        {Navigation("HoldemPage")}
         <article>
-            <header><h2>Holdem</h2></header>
-       
-            {comunitiCards()}
+            <header><h2>Holdem</h2></header>       
+            {HoldemComunitiCards(holdemBoard)}
             <ol>
                 {
                         holdemBoard.players.map(player => (                            
@@ -55,12 +42,9 @@ const HoldemPage : NextPage = () => {
                             </li>                                
                         ))
                 }                    
-            </ol>
-            <p>
-                <button onClick={shuffleCard}>shuffleCard</button>
-            </p>
+            </ol>            
         </article>
-        {fotter()}
+        {SiteFooter()}
         </>
 }
 

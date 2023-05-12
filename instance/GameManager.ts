@@ -1,7 +1,9 @@
 import { CardModel } from "../models/CardModel"
 import { HandRankModel } from "../models/HandRankModel"
+import { HoldemBoard } from "../models/HoldemBoard"
 import '/extensions/Array'
 export class GameManager {
+
     private static instance : GameManager
     public static getInstance() : GameManager {
         if(!GameManager.instance) {
@@ -14,9 +16,10 @@ export class GameManager {
 
     }
 
-    private cardDeck : Array<Card> = Array<Card>()
+    private cardDeck : Array<CardModel> = Array<CardModel>()
 
 
+    public holdemBoard = new HoldemBoard(["서태지","신해철","양현석","이주노","김건모","심신애"])
     public addCardShuffle() {
         const cards = [
             "2C","2D","2H","2S",
@@ -33,7 +36,7 @@ export class GameManager {
             "QC","QD","QH","QS",
             "TC","TD","TH","TS"                    
         ]
-        let cardArr = Array<Card>()
+        let cardArr = Array<CardModel>()
         cards.map((item)=> {
             console.log(cards);
             const card = new CardModel(item);
@@ -47,11 +50,11 @@ export class GameManager {
     }
     
 
-    public popCard(length:number):Array<Card> {
+    public popCard(length:number):Array<CardModel> {
       if(this.cardDeck.length < length) {
         this.addCardShuffle();
       }
-      let list = Array<Card>()
+      let list = Array<CardModel>()
       for(let i = 0; i<length; i++) {
         const card = this.cardDeck.pop();
         console.log("popCard : " + card.value);
@@ -61,7 +64,7 @@ export class GameManager {
       return list;
     }
 
-    public getHandRank(hand: Card[]): HandRank {
+    public getHandRank(hand: CardModel[]): HandRankModel {
         // 숫자와 무늬를 따로 분리합니다.
         let ranks = hand.map(card => card.rank);
         const suits = hand.map(card => card.suit);

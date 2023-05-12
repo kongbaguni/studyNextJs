@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import Link from 'next/link';
-import Navigation from "./Navigation";
+import Navigation from "./components/Navigation";
 import { ProfileManager } from "../instance/ProfileManager";
 import { ProfileModel } from "../models/ProfileModel";
 

@@ -1,0 +1,56 @@
+.productList ol {
+    padding:0px;
+    margin: 20px;
+}
+.productList ol > li {
+    float: none;
+    display: block;
+    min-height: 150px;
+    border: 2px solid black;
+    margin: 0px 0px 5px 0px;
+}
+.productList ol > li:hover {
+    background-color: khaki;
+}
+
+.productList ol > li > img {
+    float: left;
+    border: 2px solid black;
+    padding: 5px;
+    background-color: white;
+    margin: 20px;    
+}
+.productList ul {
+    /* border: 2px solid red; */
+    margin: 20px;
+    list-style:none;
+}
+
+.productList ul > li {
+    margin:0px 0px 10px 0px;
+}
+
+.productList ul > li h2 {
+    color: cadetblue;
+}
+
+.productList li.title {
+    border: 2px solid red;
+}
+
+.productList ul b {
+    background-color: orange;
+    padding: 5px;
+    border: 2px solid orange;
+    border-radius: 10px;
+    color: white;
+}
+
+.productList ul blockquote {
+    color: wheat;
+    padding: 20px;
+    margin: 0px;
+    background: cadetblue;
+    border: 2px solid white;
+    line-height: 30px;
+}

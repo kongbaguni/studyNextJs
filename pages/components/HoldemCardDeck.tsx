@@ -1,6 +1,6 @@
-import { PlayerModel } from "../models/PlayerModel";
+import { PlayerModel } from "../../models/PlayerModel";
 import Image from "next/image";
-import { HoldemBoard } from "../models/HoldemBoard";
+import { HoldemBoard } from "../../models/HoldemBoard";
 
 const HoldemCardDeck = (player : PlayerModel, holdemBoard:HoldemBoard) => {
     return  <>

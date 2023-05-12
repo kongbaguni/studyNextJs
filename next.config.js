@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   images: {
-    domains : ['lh3.googleusercontent.com'],
+    domains : ['lh3.googleusercontent.com','fakestoreapi.com'],
   },
 }
-
-const withImages = require('next-images')
-module.exports = withImages()

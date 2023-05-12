@@ -1,4 +1,4 @@
-export default function fotter() {
+export default function SiteFooter() {
     return (
         <footer>
             <ul>
