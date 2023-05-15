@@ -17,7 +17,7 @@ export default function Navigation(now:String) {
                     <li className={now == 'HomePage' ? 'on' : 'off'}><Link href = "/">Home</Link></li>
                     <li className={now == 'HoldemPage' ? 'on' : 'off'}><Link href="/HoldemPage">Holdem</Link></li>
                     <li className={now == 'BlackjackPage' ? 'on' : 'off'}><Link href="/BlackjackPage">Blackjack</Link></li>
-                    <li className={now == 'ProductListPage' ? 'on' : 'off'}><Link href="/ProductListPage">Product List</Link></li>
+                    <li className={now == 'ProductListPage' ? 'on' : 'off'}><Link href="/ProductList/all">Product List</Link></li>
                     {signBtn}
                 </ol>
                 </nav>

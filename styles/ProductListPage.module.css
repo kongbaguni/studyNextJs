@@ -54,3 +54,16 @@
     border: 2px solid white;
     line-height: 30px;
 }
+
+
+.categorys nav li {
+    float: left;
+    padding: 5px;
+    margin: 5px;
+    list-style: none;
+}
+.categorys nav {
+    float: none;
+    display: block;
+    height: 20px;
+}

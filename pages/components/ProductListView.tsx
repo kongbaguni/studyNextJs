@@ -1,4 +1,3 @@
-import Image from "next/image";
 import ProductView from "./ProductView";
 
 export default function ProductListView(items:[]) {
